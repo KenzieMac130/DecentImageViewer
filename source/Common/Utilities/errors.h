@@ -1,0 +1,28 @@
+#pragma once
+
+#include <stdint.h>
+#include <assert.h>
+
+/**
+* @brief Return codes and errors
+*/
+typedef enum 
+{
+	DIV_SUCCESS = 0,
+	DIV_FAILURE_UNDEFINED = UINT32_MAX,
+	DIV_FAILURE_FAILED_TO_CREATE_WINDOW = 1,
+	DIV_FAILURE_FAILED_TO_CREATE_GPU_DEVICE = 2,
+	DIV_FAILURE_DEVICE_INSUFFICIENT = 3,
+	DIV_FAILURE_FAILED_UNRECOGNIZED_FORMAT = 4,
+	DIV_FAILURE_FAILED_GPU_UPLOAD = 5,
+	DIV_FAILURE_FAILED_GPU_TEX_MIPGEN = 6
+} DivResults;
+
+#define DIVASSERT(x) assert(x)
+
+#define DIV_EXIT_ON_ERROR(__DIV_ERROR)\
+if(__DIV_ERROR != DIV_SUCCESS)\
+{ exit(__DIV_ERROR); }
+
+
+
